@@ -7,6 +7,16 @@
     background-color: #A96644;
 }
 
+#btnprueba2{
+    background-color: #8D5132;
+    border-color: #8D5132;
+    color: #ffffff;
+}
+
+#btnprueba2:hover{
+    background-color: #A96644;
+}
+
 .imagen {
     width: 1000px;
     height: 600px;
@@ -158,4 +168,5 @@ h3 {
         width: 80%;
     }
 }
+
 
