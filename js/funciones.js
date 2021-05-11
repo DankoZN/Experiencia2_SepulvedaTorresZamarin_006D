@@ -4,7 +4,7 @@
      var a = document.getElementById("nombre").value.toUpperCase();
      alert ('Hola! ' + a + ' Bienvenido a Refugio!');
    }
-   function VerificaRut(rut) {
+    /*function VerificaRut(rut) {
     if (rut.toString().trim() != '' && rut.toString().indexOf('-') > 0) {
         var caracteres = new Array();
         var serie = new Array(2, 3, 4, 5, 6, 7);
@@ -45,4 +45,4 @@
     else {
         return false;
     }
-}
+}*/

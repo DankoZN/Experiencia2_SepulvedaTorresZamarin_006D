@@ -2,15 +2,22 @@
 <html> 
   <head> 
     <title>Registrate</title> 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"> 
-  <link rel="stylesheet" type="text/css" href="css/estilos.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="js/funciones.js"></script>
+    <meta charset="utf-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/funciones.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
 
-  <script>
-
+    
+    <script>
+    
     function CambiaColor(a)
         {
             a.style.background= "#8D5132";
@@ -19,18 +26,89 @@
 
      </script>
 
-  <script>
-    function onRutBlur(obj) 
-        {
-          if (VerificaRut(obj.value))
-            alert("Rut correcto");
-          else 
-            alert("Rut incorrecto");
-              }
-  </script>
+     
+    <style>
+      .error-control {
+        border: 1px solid rgb(255, 115, 0);
+      }
+    
+      label.error {
+        color:  rgb(255, 115, 0);
+        width: 300px;
+        font-size: 0.8em;
+        margin-top: -5px;
+        margin-bottom: 10px;
+      }
+    
+    </style>
 
+<script>
+  $(function() 
+  {
+    $("#mi-formulario").validate({
+         rules: {
+                nombre: "required",
+                rut: {
+                  required: true,
+                  number: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                celular: {
+                    required:true,
+                    number: true
+                  }, 
+                password: "required",
+                password2: {
+                      required: true,
+                      equalTo: "#password"
+                },
+                grupo2: { required:true }
+
+            }, //rules
+        messages: {
+            nombre: {
+              required: 'Ingresa tu nombre y apellido'
+            },
+            rut: {
+              required: 'Ingresa tu rut',
+              maxlength: 'Excede el máximo de caracteres',
+              minlength: 'Caracteres insuficientes',
+              number: 'Debe ingresar números'
+            },
+            email: {
+              required: 'Ingresa tu correo electrónico',
+              email: 'Formato de correo no válido'
+            },
+            celular: {
+              required: 'Ingresa tu celular',
+              number: 'Debe ingresar números',
+              minlength:'Caracteres insuficientes',
+              maxlength:'Excede el máximo de caracteres'
+            },
+            password: {
+                required: 'Ingresa una contraseña',
+                minlength: 'Caracteres insuficientes'
+             },
+            password2: {
+                  required: 'Reingresa la contraseña',
+                  equalTo:  'Las contraseñas ingresadas no coinciden',
+                  minlength: 'Caracteres insuficientes'
+            },
+            grupo2: {
+              required: 'Campo requerido'
+            }
+
+        }//messages
+    }); //$('#mi-formulario').validate
+}); //function
+
+</script>
 
 </head> 
+
 <body> 
      <!-- navbar -->
      <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top ">
@@ -57,8 +135,8 @@
           <!-- insertar botones --> 
           <div>
             <a href="file:///C:/Users/theda/OneDrive/Escritorio/Exp2_SepulvedaTorresZamarin_006D/Experiencia2_SepulvedaTorresZamarin_006D/iniciosesion.html" button type="button" class="btn btn-primary" id="btnprueba">Iniciar Sesión</button></a>
-            <a href="#" button type="button" class="btn btn-primary" id="btnprueba">Regístrate</button></a>
-          </div>     
+            <a href="file:///C:/Users/theda/OneDrive/Escritorio/Exp2_SepulvedaTorresZamarin_006D/Experiencia2_SepulvedaTorresZamarin_006D/registrate.html" button type="button" class="btn btn-primary" id="btnprueba">Regístrate</button></a>
+          </div>   
     </nav>          
     <!-- fin navbar -->         
      
@@ -67,49 +145,53 @@
     <div class="linea"></div>
   <div class="container">
 
-    <form role="form" method="post" action="index.html">
+    <form id="mi-formulario" role="form" method="post" action="index.html">
       <div class="form-group"> 
         <label for="nombre">Ingrese su nombre y apellido:</label>
-        <input type="text" class="form-control" id="nombre"  required autofocus>
+        <input type="text" class="form-control" id="nombre" name="nombre" value="" required autofocus>
         <input type="button" name="btn2" id="btnprueba2" value="Ver Saludo" onclick="Saludar()">
       </div> 
-      <div class="form-group"> 
-      <label for="rut">Ingrese su rut:</label>
-      <input type="text" id="txtRut" placeholder="11111111-1" maxlength="10" max="10" onblur="onRutBlur(this);">
-      </div>
 
       <div class="form-group"> 
-        <label for="cumpleaños">Ingrese su fecha de Nacimiento: (Recibirá código de descuento en su cumpleaños)</label>
-        <input type="date" class="form-control" id="birthday" name="birthday" min="1910-01-01" max="2200-12-31" onfocus="CambiaColor(this)">
-  
+        <label for="rut">Ingrese su rut sin dígito verificador:</label>
+        <input type="text"  id="rut" name="rut" placeholder="11111111" required  minlength="7" maxlength="8" >
+      </div> 
+      <div class="form-group"> 
+        <label for="cumpleaños">Ingrese su fecha de Nacimiento: (Recibirá código de descuento en su cumpleaños) *Opcional </label>
+        <input type="date" class="form-control" id="birthday" name="birthday" min="1921-01-01" max="2200-12-31" onfocus="CambiaColor(this)">
       </div> 
       <div class="form-group"> 
       <label for="Correo">Ingrese su Correo Electrónico:</label>
-        <input type="email" class="form-control" id="mail" required >
+        <input type="email" class="form-control" id="mail" name= "email" placeholder="nombre@dominio.cl" required >
       </div> 
       <div class="form-group"> 
         <label for="celular">Ingrese Celular:</label>
-        <input type="tel" class="form-control" id="fono" pattern="[0-9]{8}" minlength="8" maxlength="8"  required> 
+        <input type="tel" class="form-control" id="celular" name="celular" placeholder="91111111" pattern="[0-9]{9}" minlength="9" maxlength="9"  required> 
       </div> 
       <div class="form-group"> 
         <label for="clave">Ingrese su clave:</label>
-        <input type="password" class="form-control" id="clave"  required>
+        <input type="password" class="form-control" id="clave" name= "password"  minlength="6" required>
       </div> 
+      <div class="form-group"> 
+        <label for="clave">Confirme su clave:</label>
+        <input type="password" class="form-control" id="clave" name= "password2"  minlength="6" required>
+      </div> 
+      <hr>
       <!--checknox En la misma linea-->
       <label for="comentarios">Indique su género:</label>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" value="" id="radio4" name="grupo2">
+        <input class="form-check-input" type="radio" value="" id="radio4" name="grupo2" required>
         <label class="form-check-label" for="radio4">
           Fenemino
         </label>
       </div>
-
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" value="" id="radio4" name="grupo2">
+        <input class="form-check-input" type="radio" value="" id="radio4" name="grupo2" required>
         <label class="form-check-label" for="radio4">
           Masculino
         </label>
       </div>
+      <label for="grupo2" class="error" ></label>
       <hr>
       <!-- checkbox ubicados uno debajo del otro-->
       <label for="comentarios">Indique Servicios de su interés:</label>
@@ -119,7 +201,7 @@
           Depilación
         </label>
        </div>
-    
+     
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="checkbox2" name="checkbox2">
         <label class="form-check-label" for="checkbox2">
@@ -148,7 +230,7 @@
       <br>
 
       <button type="submit" class="btn btn-danger" id="btnprueba">Enviar</button> 
-      <button type="reset" class="btn btn-danger" id="btnprueba">Limpiar</button> 
+      <button type="reset" class="btn btn-danger"id="btnprueba">Limpiar</button> 
 
       <br><br>
     </form>
@@ -167,9 +249,6 @@
 
   </footer>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
   
 </body> 
 </html> 

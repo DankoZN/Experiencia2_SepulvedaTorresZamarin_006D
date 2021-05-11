@@ -8,6 +8,53 @@
   <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"> 
   <link rel="stylesheet" type="text/css" href="css/estilos.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+
+  <style>
+  .error-control {
+    border: 1px solid rgb(255, 115, 0);
+  }
+
+  label.error {
+    color:rgb(255, 115, 0);
+    width: 300px;
+    font-size: 0.8em;
+    margin-top: -5px;
+    margin-bottom: 10px;
+  }
+
+</style>
+
+<script>
+  $(function() 
+  {
+    $("#mi-formulario").validate({
+         rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: "required"                
+            }, //rules
+        messages: {
+            email: {
+                required: 'Ingresa tu correo electrónico',
+                email: 'Formato de correo no válido'
+            },
+            password: {
+                required: 'Ingresa una contraseña',
+                minlength: 'Caracteres insuficientes'
+            }
+        }//messages
+    }); //$('#mi-formulario').validate
+}); //function
+
+</script>
 </head>
 <body>
             <!-- navbar -->
@@ -33,43 +80,44 @@
                   </ul>  
                 </div>
                   <!-- insertar botones --> 
-                <div >
-                  <a href="#" button type="button" class="btn btn-primary" id="btnprueba">Iniciar Sesión</button></a>
-                  <a href="file:///C:/Users/theda/OneDrive/Escritorio/Exp2_SepulvedaTorresZamarin_006D/Experiencia2_SepulvedaTorresZamarin_006D/registrate.html" button type="button" class="btn btn-primary" id="btnprueba">Regístrate</button></a>
-                </div>      
+                  <div>
+                    <a href="file:///C:/Users/theda/OneDrive/Escritorio/Exp2_SepulvedaTorresZamarin_006D/Experiencia2_SepulvedaTorresZamarin_006D/iniciosesion.html" button type="button" class="btn btn-primary" id="btnprueba">Iniciar Sesión</button></a>
+                    <a href="file:///C:/Users/theda/OneDrive/Escritorio/Exp2_SepulvedaTorresZamarin_006D/Experiencia2_SepulvedaTorresZamarin_006D/registrate.html" button type="button" class="btn btn-primary" id="btnprueba">Regístrate</button></a>
+                  </div>    
             </nav>          
             <!-- fin navbar -->
 
-            <div class="galeria">
-                <h1>Inicio de Sesión</h1>
-              <div class="linea"></div>
+    <div class="galeria">
+    <h1>Inicio de Sesión</h1>
+    <div class="linea"></div>
               
 
     <div class="container">    
          
-              <form action="Index.html">
+            <form id="mi-formulario" action="Index.html">
               <div class="form-group row">
                 <label for="Correo" class="col-lg-3 col-form-label" >Ingrese Correo Electrónico:</label>
                 <div class="col-lg-9">
-                  <input type="email" class="form-control" id="mail" required autofocus >
+                  <input type="email" class="form-control" name="email" placeholder="nombre@dominio.cl" required autofocus >
                 </div>
               </div>
               <div class="form-group row">
                 <label for="clave" class="col-lg-3 col-form-label">Ingrese password:</label>
                 <div class="col-lg-9">
-                  <input type="password" class="form-control" id="clave" required maxlength="10" >
+                  <input type="password" class="form-control" id="password" name="password" minlength="6" required>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="offset-lg-3 col-lg-9">
-                  <button type= "submit" class= "btn btn-danger" id="btnprueba">Enviar</button> 
-                  <button type= "reset" class= "btn btn-danger" id="btnprueba">Limpiar</button> 
+                  <button type="submit" class="btn btn-danger" id="btnprueba" >Enviar</button> 
+                  <button type="reset" class="btn btn-danger"id="btnprueba">Limpiar</button> 
                 </div> 
               </div>
-              
+            
             </form>           
+    </div> 
     </div>
-            </div>
+
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
              <!-- footer -->    
              <footer class= "container-fluid footer" >
@@ -82,8 +130,5 @@
                 </p>
       
               </footer>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
-  </body>
+          </body>
 </html>
