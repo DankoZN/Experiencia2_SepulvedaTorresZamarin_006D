@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>API de Horóscopo</title>
+
+        <script >
+
+    
+
+            $(document).ready(function()
+                    {
+                        $("#solicitar").click(function(){
+
+                            $.get("https://api.adderou.cl/tyaas/",
+                                function(data){
+                                    
+                                    $.each(data.horoscopo,function(i,item){
+                                        $("#horoscopo").append("<tr><td>"+item.nombre +"</td><td>"+ item.fechaSigno +
+                                        "</td><td>"+ item.amor+ "</td><td>" + item.salud + "</td><td>" + item.dinero + 
+                                        "</td><td>" + item.color + "</td><td>" + item.numero + "</td></tr>");
+                                    });
+
+
+                                });
+                        });
+                    })
+        </script>
+
+<style>
+    #caja{
+        margin-left:40px;
+    }
+    
+</style>
+
+</head>
+<body>
+    <h1>Horóscopo</h1>
+    <hr>
+    <div id="caja">
+        <button type="button" id="solicitar">Mostrar Signos</button>
+    </div>
+    <br><br>
+
+    <table class="table" id="horoscopo">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Fecha Signo</th>
+                <th scope="col">Amor</th>
+                <th scope="col">Salud</th>
+                <th scope="col">Dinero</th>
+                <th scope="col">Color</th>
+                <th scope="col">Número</th> 
+        
+           </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+
+    </table>
+    
+</body>
+</html>
